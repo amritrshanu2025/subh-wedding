@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wedding Invitation</title>
+  <meta name="description" content="You are warmly invited to our wedding celebrations.">
+  <meta name="theme-color" content="#641E2B">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23641E2B'/%3E%3Cpath d='M32 12c7 9 7 21 0 34-7-13-7-25 0-34z' fill='%23D4AF65'/%3E%3Cpath d='M32 46c-9-2-15-9-17-18 8 1 14 7 17 18zM32 46c9-2 15-9 17-18-8 1-14 7-17 18z' fill='%23D4AF65' opacity='.75'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Livvic:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <noscript><style>.intro{display:none!important}body{overflow:auto!important}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body class="is-locked">
+  <a class="skip" href="#main">Skip to invitation</a>
+
+  <!-- Shared SVG gradients; decorative symbols are added by js/main.js -->
+  <svg id="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#F6E3A8"/><stop offset=".5" stop-color="#D4AF65"/><stop offset="1" stop-color="#A57F35"/>
+      </linearGradient>
+      <radialGradient id="g-flame" cx=".5" cy=".7" r=".6">
+        <stop offset="0" stop-color="#FFF6C8"/><stop offset=".45" stop-color="#FFC94A"/><stop offset="1" stop-color="#E8682A"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <!-- ============ OPENING SCREEN ============ -->
+  <div id="intro" class="intro" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+    <div class="gate gate-l" aria-hidden="true"><svg class="gate-mandala"><use href="#mandala"/></svg></div>
+    <div class="gate gate-r" aria-hidden="true"><svg class="gate-mandala"><use href="#mandala"/></svg></div>
+    <div class="intro-card">
+      <svg class="corner c-bl" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="corner c-br" aria-hidden="true"><use href="#corner"/></svg>
+      <div id="intro-art" class="intro-art"></div>
+      <p class="eyebrow" id="intro-heading"></p>
+      <h1 id="intro-title" class="intro-names"></h1>
+      <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+      <p class="intro-date" id="intro-date"></p>
+      <p class="intro-place" id="intro-place"></p>
+      <button id="open-btn" class="btn btn-gold btn-open" type="button"></button>
+      <p class="intro-hint" id="intro-hint" hidden>Best enjoyed with sound on</p>
+    </div>
+  </div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header id="nav" class="nav">
+    <a href="#home" class="brand" id="brand" aria-label="Home"></a>
+    <nav aria-label="Main">
+      <ul id="nav-links" class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#family">Family</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#venue">Venue</a></li>
+      </ul>
+    </nav>
+    <div class="nav-tools">
+      <button id="nav-music" class="icon-btn music-toggle" type="button" hidden aria-pressed="false" aria-label="Play music"></button>
+      <button id="menu-btn" class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"></button>
+    </div>
+  </header>
+
+  <main id="main" class="site">
+    <!-- HOME / HERO -->
+    <section id="home" class="hero" aria-labelledby="hero-names">
+      <div class="hero-couple" id="hero-couple" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true">
+        <svg class="hero-mandala"><use href="#mandala"/></svg>
+        <span class="chain chain-l"></span><svg class="bell bell-l"><use href="#bell"/></svg>
+        <span class="chain chain-r"></span><svg class="bell bell-r"><use href="#bell"/></svg>
+      </div>
+      <div class="hero-inner">
+        <svg class="hero-lotus" aria-hidden="true"><use href="#lotus"/></svg>
+        <p class="eyebrow light" id="hero-eyebrow"></p>
+        <h2 id="hero-names" class="hero-names" tabindex="-1"></h2>
+        <p class="hero-line" id="hero-line"></p>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+        <p class="hero-date fade-up" id="hero-date"></p>
+        <p class="hero-place fade-up" id="hero-place"></p>
+        <div class="countdown fade-up" id="countdown" role="timer" aria-label="Countdown to the wedding"></div>
+      </div>
+      <div class="diyas" aria-hidden="true"></div>
+      <a class="scroll-cue" href="#story" aria-label="Scroll to our story"><span></span></a>
+    </section>
+
+    <!-- OUR STORY -->
+    <section id="story" class="section story" aria-labelledby="story-title">
+      <div class="float-flowers" aria-hidden="true"></div>
+      <header class="sec-head reveal">
+        <p class="eyebrow">Our Story</p>
+        <h2 class="sec-title" id="story-title"></h2>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+      </header>
+      <div class="couple-grid">
+        <article class="person reveal" id="groom-card" aria-label="The groom"></article>
+        <div class="couple-amp reveal" aria-hidden="true">&amp;</div>
+        <article class="person reveal" id="bride-card" aria-label="The bride" style="--d:150ms"></article>
+      </div>
+      <div class="story-countdown reveal" aria-labelledby="sc-title">
+        <svg class="sc-orn" aria-hidden="true"><use href="#lotus"/></svg>
+        <h3 class="sc-title" id="sc-title">Countdown to Our Wedding</h3>
+        <div class="countdown cd-light" id="countdown-story" role="timer" aria-label="Countdown to the wedding"></div>
+        <p class="sc-date" id="sc-date"></p>
+      </div>
+      <div class="couple-feature reveal" id="couple-feature"></div>
+    </section>
+
+    <!-- FAMILY -->
+    <section id="family" class="section family" aria-labelledby="family-title">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Our Families</p>
+        <h2 class="sec-title" id="family-title">Two Families, One Beautiful Celebration</h2>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+      </header>
+      <div class="families" id="families"></div>
+      <div class="family-blessing reveal" id="family-blessing"></div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="section events" aria-labelledby="events-title">
+      <header class="sec-head reveal">
+        <p class="eyebrow">The Celebrations</p>
+        <h2 class="sec-title" id="events-title">Wedding Festivities</h2>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+      </header>
+      <div class="event-grid" id="event-grid"></div>
+
+      <div class="timeline-wrap">
+        <header class="sec-head small reveal">
+          <p class="eyebrow">At a Glance</p>
+          <h3 class="sec-title sm">Celebration Timeline</h3>
+        </header>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section gallery" aria-labelledby="gallery-title">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Moments</p>
+        <h2 class="sec-title" id="gallery-title">Our Gallery</h2>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+      </header>
+      <div class="chips" id="gallery-chips" role="group" aria-label="Filter photographs"></div>
+      <div class="g-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- VENUE -->
+    <section id="venue" class="section venue" aria-labelledby="venue-title">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Where</p>
+        <h2 class="sec-title" id="venue-title">The Venue</h2>
+        <svg class="divider" aria-hidden="true"><use href="#divider"/></svg>
+      </header>
+      <div class="venue-card reveal" id="venue-card"></div>
+    </section>
+
+    <!-- BLESSINGS (hidden until text.blessing is set) -->
+    <section id="blessings" class="section blessings" aria-label="Blessings" hidden>
+      <figure class="blessing reveal" id="blessing"></figure>
+    </section>
+
+    <!-- THANK YOU -->
+    <section id="thanks" class="section thanks" aria-labelledby="thanks-title">
+      <div class="thanks-inner reveal" id="thanks-inner"></div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer"></footer>
+
+  <!-- Music player (shown only when music.src is set) -->
+  <div id="player" class="player" hidden></div>
+
+  <!-- Gallery lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Close photo viewer"></button>
+    <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Previous photo"></button>
+    <figure class="lb-figure">
+      <img id="lb-img" alt="">
+      <figcaption><span id="lb-cap"></span><span class="lb-count" id="lb-count"></span></figcaption>
+    </figure>
+    <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Next photo"></button>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
