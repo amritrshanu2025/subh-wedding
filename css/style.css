@@ -95,6 +95,8 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 .icon-btn .ic { width: 20px; height: 20px; }
 .icon-btn[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--wine); }
 
+
+
 /* Photo frames & placeholders */
 .photo { position: relative; overflow: hidden; width: 100%; height: 100%; background: linear-gradient(160deg, #FFF6E6, #F6E2D8); }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 1.6s var(--ease); }

@@ -223,7 +223,7 @@
      Photos with graceful placeholders
      ------------------------------------------------------------------ */
   const placeholder = (label) =>
-    `<div class="ph" role="img" aria-label="${esc(label)} (photograph to be added)">${ic("user", "ph-ic")}<span>${esc(label)}</span><small>Photo to be added</small></div>`;
+    `<div class="ph" role="img" aria-label="${esc(label)} (photograph to be added)">${ic("user", "ph-ic")}<span>${esc(label)}</span><small></small></div>`;
   function photo(src, alt, fallback) {
     const s = safeSrc(src);
     return `<div class="photo"><div class="ph-wrap"${s ? ' aria-hidden="true"' : ""}>${fallback}</div>${
@@ -350,9 +350,20 @@
   function renderIntro() {
     $("#intro-heading").textContent = T.openingHeading || "Together with Our Families";
     $("#intro-title").innerHTML = `<span class="nm">${show(groomShort, "Groom")}</span><span class="amp" aria-hidden="true">&amp;</span><span class="sr"> and </span><span class="nm">${show(brideShort, "Bride")}</span>`;
-    $("#intro-art").outerHTML = safeSrc(CP.photo)
-      ? `<div class="intro-portrait">${photo(CP.photo, "The couple", `<div class="ph">${use("mandap", "", 'viewBox="0 0 320 200" style="width:80%"')}</div>`)}</div>`
-      : `<div class="intro-art">${use("mandap", "", 'viewBox="0 0 320 200"')}</div>`;
+  const startPhoto = CP.startCardPhoto || CP.photo;
+
+$("#intro-art").outerHTML = safeSrc(startPhoto)
+  ? `<div class="intro-portrait">
+       ${photo(startPhoto, "The couple", `<div class="ph">${use("mandap", "", 'viewBox="0 0 320 200" style="width:80%"')}</div>`)}
+     </div>`
+  : `<div class="intro-art">${use("mandap", "", 'viewBox="0 0 320 200"')}</div>`;
+
+const introImg = document.querySelector(".intro-portrait .photo img");
+
+if (introImg) {
+  introImg.style.objectFit = "contain";
+  introImg.style.objectPosition = "center";
+}
     $("#intro-date").innerHTML = weddingDateText ? esc(weddingDateText) : '<span class="tbd">Wedding date to be announced</span>';
     $("#intro-place").innerHTML = isSet(W.city) ? esc(W.city.trim()) : isSet(W.venueName) ? esc(W.venueName.trim()) : '<span class="tbd">Venue to be announced</span>';
     $("#open-btn").textContent = T.openButton || "Open Wedding Invitation";
@@ -445,7 +456,7 @@
       .map(([x, y, s], k) => `<svg style="left:${x}%;top:${y}%;width:${s}px;height:${s / 2}px;animation-delay:-${k * 1.7}s"><use href="#lotus"/></svg>`)
       .join("");
     $("#couple-feature").innerHTML = `
-      <div class="couple-photo">${photo(CP.photo, "The couple together", placeholder("Couple portrait"))}</div>
+      <div class="couple-photo">${photo(CP.photo, "The couple together", placeholder(""))}</div>
       <div class="couple-text">
         ${use("lotus", "", 'style="width:60px;height:30px;color:var(--gold)"')}
         <p class="names">${coupleHTML()}</p>

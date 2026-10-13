@@ -30,41 +30,44 @@
        The bride
        --------------------------------------------------------------- */
     bride: {
-      fullName: R,                      // e.g. "Anaya Sharma"
-      displayName: R,                   // short name for big headings, e.g. "Anaya"
+      fullName: "Shivani Patwariya",                      // e.g. "Anaya Sharma"
+      displayName: "Shivani",                   // short name for big headings, e.g. "Anaya"
       nickname: "",                     // optional
-      father: R,                        // e.g. "Mr. Rajesh Sharma"
-      mother: R,                        // e.g. "Mrs. Sunita Sharma"
+      father: "Mr. Totaram Patwariya",                        // e.g. "Mr. Rajesh Sharma"
+      mother: "Mrs. Anita Patwariya",                        // e.g. "Mrs. Sunita Sharma"
       familyIntro: "",                  // optional, e.g. "Granddaughter of … , from Jaipur"
       description: "",                  // optional, a few warm sentences
       photo: "assets/images/gallery/bride.png",                        // e.g. "assets/images/bride.jpg"
       parentsPhoto: "",                 // both parents together, e.g. "assets/images/bride-parents.jpg"
-      fatherPhoto: "",                  // e.g. "assets/images/bride-father.jpg"  (Family section)
-      motherPhoto: ""                   // e.g. "assets/images/bride-mother.jpg"  (Family section)
+      fatherPhoto: "assets/images/gallery/bride-father.png",                  // e.g. "assets/images/bride-father.jpg"  (Family section)
+      motherPhoto: "assets/images/gallery/bride-mother.png", 
+        familyPhoto: "assets/images/gallery/bride-family.png"                  // e.g. "assets/images/bride-mother.jpg"  (Family section)
     },
 
     /* ---------------------------------------------------------------
        The groom
        --------------------------------------------------------------- */
     groom: {
-      fullName: R,
-      displayName: R,
+      fullName: "Shubham Dogaya",
+      displayName: "Shubham",
       nickname: "",
-      father: R,
-      mother: R,
+      father: " Mr. Premlal Dogaya",
+      mother: " Mrs. Basu Dogaya",
       familyIntro: "",
       description: "",
       photo: "assets/images/gallery/groom.png",                        // e.g. "assets/images/groom.jpg"
       parentsPhoto: "",                 // e.g. "assets/images/groom-parents.jpg"
       fatherPhoto: "",                  // e.g. "assets/images/groom-father.jpg"
-      motherPhoto: ""                   // e.g. "assets/images/groom-mother.jpg"
+      motherPhoto: "" ,                  // e.g. "assets/images/groom-mother.jpg"
+      familyPhoto: "assets/images/gallery/groom-family.png"
     },
 
     /* ---------------------------------------------------------------
        The couple
        --------------------------------------------------------------- */
     couple: {
-      photo: "assets/images/gallery/couple.png",                        // e.g. "assets/images/couple.jpg" (also used on the opening screen)
+      photo: "assets/images/gallery/couple.png",   
+      startCardPhoto: "assets/images/gallery/start-card1.png",                     // e.g. "assets/images/couple.jpg" (also used on the opening screen)
       // Faint background photos on the home screen — groom on the LEFT, bride on the RIGHT.
       // Put your photos in assets/images/ with these exact names (tall portrait photos work best).
       // Until the files exist, a gold line-art groom & bride is shown instead.
