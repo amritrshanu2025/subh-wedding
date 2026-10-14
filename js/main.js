@@ -38,14 +38,48 @@
   const fmtDate = (d) => fmt(d, { day: "numeric", month: "long", year: "numeric" });
   const fmtShort = (d) => fmt(d, { day: "numeric", month: "short" });
   const weekday = (d) => fmt(d, { weekday: "long" });
-  function fmtTime(t) {
-    if (!isSet(t) || !TIME_RE.test(t.trim())) return null;
-    let [h, m] = t.trim().split(":").map(Number);
-    if (h > 23 || m > 59) return null;
-    const ap = h >= 12 ? "PM" : "AM";
-    h = h % 12 || 12;
-    return `${h}:${String(m).padStart(2, "0")} ${ap}`;
+ function fmtTime(t) {
+  if (!isSet(t)) return null;
+
+  const value = t.trim();
+
+  // Support both 12-hour AM/PM and 24-hour formats
+  const twelveHour = value.match(
+    /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
+  );
+
+  if (twelveHour) {
+    let h = Number(twelveHour[1]);
+    const m = Number(twelveHour[2]);
+    const period = twelveHour[3].toUpperCase();
+
+    if (h < 1 || h > 12 || m > 59) return null;
+
+    h = h % 12;
+    if (period === "PM") h += 12;
+
+    const displayHour = h % 12 || 12;
+    return `${displayHour}:${String(m).padStart(2, "0")} ${period}`;
   }
+
+  const twentyFourHour = value.match(
+    /^(\d{1,2}):(\d{2})$/
+  );
+
+  if (twentyFourHour) {
+    const h = Number(twentyFourHour[1]);
+    const m = Number(twentyFourHour[2]);
+
+    if (h > 23 || m > 59) return null;
+
+    const period = h >= 12 ? "PM" : "AM";
+    const displayHour = h % 12 || 12;
+
+    return `${displayHour}:${String(m).padStart(2, "0")} ${period}`;
+  }
+
+  return null;
+}
 
   const B = C.bride || {}, G = C.groom || {}, W = C.wedding || {}, T = C.text || {}, CP = C.couple || {};
   const tz = isSet(W.timeZoneLabel) ? " " + W.timeZoneLabel.trim() : "";
@@ -365,7 +399,7 @@ if (introImg) {
   introImg.style.objectPosition = "center";
 }
     $("#intro-date").innerHTML = weddingDateText ? esc(weddingDateText) : '<span class="tbd">Wedding date to be announced</span>';
-    $("#intro-place").innerHTML = isSet(W.city) ? esc(W.city.trim()) : isSet(W.venueName) ? esc(W.venueName.trim()) : '<span class="tbd">Venue to be announced</span>';
+    $("#intro-place").innerHTML = isSet(W.city) ? esc(W.city.trim()) : isSet(W.venueName) ? esc(W.venueName.trim()) : '<span class="tbd">Village : Pidhay Bujurg  </span>';
     $("#open-btn").textContent = T.openButton || "Open Wedding Invitation";
     if (C.music && isSet(C.music.src)) $("#intro-hint").hidden = false;
   }
@@ -378,7 +412,7 @@ if (introImg) {
       `<span class="amp" aria-hidden="true">&amp;</span><span class="sr"> and </span>` +
       `<span class="nm${brideShort ? "" : " tbd"}">${letters(b, 900 + g.length * 55)}</span>`;
     renderHeroCouple();
-    $("#hero-line").textContent = T.heroLine || "joyfully invite you to celebrate their wedding";
+    $("#hero-line").textContent = T.heroLine || "joyfully invite you to celebrate our wedding";
     $("#hero-date").innerHTML = weddingDateText
       ? esc(weddingDateText) + (fmtTime(W.time) ? ` &middot; ${fmtTime(W.time)}${esc(tz)}` : "")
       : '<span class="tbd">Wedding date to be announced</span>';
@@ -630,7 +664,8 @@ if (introImg) {
     const links = $$("#nav-links a").map((a) => `<li><a href="${a.getAttribute("href")}">${esc(a.textContent)}</a></li>`).join("");
     $("#footer").innerHTML = `
       <p class="f-names">${coupleHTML()}</p>
-      <p class="f-date">${weddingDateLong ? esc(weddingDateLong) : ""}</p>
+      <p class="f-date">2 December 2026</p>
+      <h2 class="f-heading"> Blessing Ceremony & Wedding Reception </h2>
       <p class="f-thanks">Thank you for being part of our story.</p>
       <ul class="f-links">${links}</ul>
       <button class="icon-btn f-music music-toggle" type="button" hidden aria-pressed="false" aria-label="Play music"></button>

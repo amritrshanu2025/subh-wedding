@@ -499,7 +499,7 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 /* =====================================================================
    GALLERY
    ===================================================================== */
-.gallery { background: linear-gradient(180deg, var(--ivory), #FBEDE8); }
+.gallery { background: linear-gradient(180deg, var(--ivory), #FBEDE8); display: none; }
 .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 900px; margin: 0 auto 28px; }
 .chips:empty { display: none; }
 .chip { min-height: 40px; padding: .4em 1.1em; border-radius: 999px; border: 1px solid rgba(122, 38, 58, .35); background: transparent; cursor: pointer; font-size: .85rem; transition: background-color .3s, color .3s; }
@@ -543,7 +543,7 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 /* =====================================================================
    VENUE
    ===================================================================== */
-.venue { background: var(--ivory); }
+.venue { background: var(--ivory); display:none }
 .venue-card {
   display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); max-width: 1080px; margin: 0 auto; overflow: hidden;
   background: #fff; border: 1px solid rgba(212, 175, 101, .5); border-radius: 28px; box-shadow: var(--shadow);
@@ -632,7 +632,8 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 .footer::before { content: ""; position: absolute; inset: -13px 0 auto; height: 14px; background: radial-gradient(circle at 10px 15px, transparent 9px, #3E0F1A 10px) 0 0 / 20px 14px repeat-x; }
 .f-names { font-family: var(--serif); font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); margin: 0; color: #FBE9C6; }
 .f-names .amp { display: inline; color: var(--gold); margin: 0 .15em; }
-.f-date { margin: .2rem 0 0; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; font-size: .78rem; }
+.f-date { margin: .2rem 0 0; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; font-size: 3.3rem; }
+.f-heading { margin: .5rem 0 0; font-family: var(--serif); font-size: 2.2rem; color: var(--gold); }
 .f-thanks { margin: 1rem auto 0; max-width: 44ch; opacity: .85; font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
 .f-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; list-style: none; margin: 1.6rem 0 0; padding: 0; }
 .f-links a { display: inline-block; padding: 8px 2px; text-decoration: none; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; opacity: .85; }
