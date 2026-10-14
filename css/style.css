@@ -632,7 +632,7 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 .footer::before { content: ""; position: absolute; inset: -13px 0 auto; height: 14px; background: radial-gradient(circle at 10px 15px, transparent 9px, #3E0F1A 10px) 0 0 / 20px 14px repeat-x; }
 .f-names { font-family: var(--serif); font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); margin: 0; color: #FBE9C6; }
 .f-names .amp { display: inline; color: var(--gold); margin: 0 .15em; }
-.f-date { margin: .2rem 0 0; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; font-size: 3.3rem; }
+.f-date { margin: .2rem 0 0; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; font-size: 3.3rem; }
 .f-heading { margin: .5rem 0 0; font-family: var(--serif); font-size: 2.2rem; color: var(--gold); }
 .f-thanks { margin: 1rem auto 0; max-width: 44ch; opacity: .85; font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
 .f-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; list-style: none; margin: 1.6rem 0 0; padding: 0; }
@@ -916,4 +916,14 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
   .countdown.cd-light { gap: 6px; }
   .cd-light .cd-lbl { font-size: .8rem; }
   .cd-light .cd-num { font-size: 1.75rem; }
+}
+
+
+.f-credit-instagram {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.f-credit-instagram:hover {
+  opacity: 0.8;
 }

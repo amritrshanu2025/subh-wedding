@@ -664,8 +664,9 @@ if (introImg) {
     const links = $$("#nav-links a").map((a) => `<li><a href="${a.getAttribute("href")}">${esc(a.textContent)}</a></li>`).join("");
     $("#footer").innerHTML = `
       <p class="f-names">${coupleHTML()}</p>
-      <p class="f-date">2 December 2026</p>
+      
       <h2 class="f-heading"> Blessing Ceremony & Wedding Reception </h2>
+      <p class="f-date">2 December 2026</p>
       <p class="f-thanks">Thank you for being part of our story.</p>
       <ul class="f-links">${links}</ul>
       <button class="icon-btn f-music music-toggle" type="button" hidden aria-pressed="false" aria-label="Play music"></button>
@@ -677,17 +678,72 @@ if (introImg) {
       ${creditHTML()}`;
   }
 
-  function creditHTML() {
-    const cr = C.credits || {};
-    if (!isSet(cr.builderName)) return "";
-    const tel = isSet(cr.builderPhone) ? cr.builderPhone.replace(/[^\d+]/g, "") : "";
-    return `<div class="f-credit">
-      
-      <p>${esc(isSet(cr.label) ? cr.label.trim() : "Website designed & developed by")}</p>
-      <p class="f-credit-name">${esc(cr.builderName.trim())}</p>
-      ${tel ? `<a class="f-credit-phone" href="tel:${esc(tel)}">${ic("phone")} ${esc(cr.builderPhone.trim())}</a>` : ""}
+ 
+function creditHTML() {
+  const cr = C.credits || {};
+
+  if (!isSet(cr.builderName)) return "";
+
+  const tel = isSet(cr.builderPhone)
+    ? cr.builderPhone.replace(/[^\d+]/g, "")
+    : "";
+
+  const instagramId = isSet(cr.instagramId)
+    ? cr.instagramId.trim()
+    : "";
+
+  const instagramUrl = isSet(cr.instagramUrl)
+    ? cr.instagramUrl.trim()
+    : instagramId
+      ? `https://www.instagram.com/${instagramId.replace(/^@/, "")}/`
+      : "";
+
+  return `<div class="f-credit">
+      <p>${esc(
+        isSet(cr.label)
+          ? cr.label.trim()
+          : "Website designed & developed by"
+      )}</p>
+
+      <p class="f-credit-name">
+        ${esc(cr.builderName.trim())}
+      </p>
+
+      ${
+        tel
+          ? `<a class="f-credit-phone" href="tel:${esc(tel)}">
+              ${ic("phone")} ${esc(cr.builderPhone.trim())}
+            </a>`
+          : ""
+      }
+
+     
+ ${instagramId ? `
+  <a class="f-credit-phone f-credit-instagram"
+     href="${esc(instagramUrl)}"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Visit Instagram profile">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="16" height="16"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/>
+    </svg>
+    ${esc(instagramId)}
+  </a>
+` : ""
+}
     </div>`;
-  }
+}
+
 
   /* ==================================================================
      EXTRA MOTION: scroll progress, hero parallax, card tilt, sparkle trail

@@ -251,10 +251,12 @@
        WEBSITE CREDIT — shown at the very bottom of the page.
        Set builderName to "" to hide it.
        --------------------------------------------------------------- */
-    credits: {
-      label: "Website designed & developed by",
-      builderName: "Amrit Punasya",
-      builderPhone: "7999649615"
-    }
+   credits: {
+  label: "Website designed & developed by",
+  builderName: "Amrit Punasya",
+  builderPhone: "7999649615",
+  instagramId: "@er_amrit.punasya",
+  instagramUrl: "https://www.instagram.com/er_amrit.punasya/"
+}
   };
 })();
