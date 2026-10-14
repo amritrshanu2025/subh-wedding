@@ -869,6 +869,12 @@ h1, h2, h3, h4 { overflow-wrap: anywhere; }
 /* v4b — soft, maroon-tinted photos like the mockup (tint lives in the photo, so no box edges) */
 .hc img { opacity: .3; mix-blend-mode: normal; filter: grayscale(.2) sepia(.85) hue-rotate(-38deg) saturate(1.6) brightness(.92) contrast(1.05); }
 @media (max-width: 760px) { .hc img { opacity: .2; } }
+@media (max-width: 760px) {
+  .hc { width: 44vw; height: 82%; }
+  .hc img { opacity: .26; object-position: 50% 12%; }
+  .hc-groom img { object-position: 75% 12%; -webkit-mask-image: none; mask-image: none; }
+  .hc-bride img { object-position: 25% 12%; -webkit-mask-image: none; mask-image: none; }
+}
 
 /* =====================================================================
    Countdown block under the groom & bride (ivory cards, maroon numbers)

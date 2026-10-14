@@ -72,7 +72,7 @@
       // Put your photos in assets/images/ with these exact names (tall portrait photos work best).
       // Until the files exist, a gold line-art groom & bride is shown instead.
       heroGroomPhoto: "assets/images/gallery/hero-groom.png",
-      heroBridePhoto: "assets/images/gallery/hero-bride1.png",
+      heroBridePhoto: "assets/images/gallery/hero-bride.png",
       heading: "Two Hearts, One Beautiful Journey",
       story: ""                         // your love story / introduction — leave "" to hide
     },
